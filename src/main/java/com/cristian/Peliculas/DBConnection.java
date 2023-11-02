@@ -1,4 +1,4 @@
-package com.cristian.Peliculas.infrastructure;
+package com.cristian.Peliculas;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,8 +13,8 @@ public class DBConnection {
         if(connection == null) {
             try {
                 connection = DriverManager.getConnection(
-                        "jdbc:mysql://database-1.czxapucafvwz.us-east-1.rds.amazonaws.com/videojuego",
-                        "videojuego", "videojueg123");
+                        "jdbc:mysql://database-1.czxapucafvwz.us-east-1.rds.amazonaws.com/peliculas",
+                        "admin", "potolo123");
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
