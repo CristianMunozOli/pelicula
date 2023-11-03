@@ -4,6 +4,7 @@ import com.cristian.Peliculas.DBConnection;
 import com.cristian.Peliculas.usuario.domain.Usuario;
 import com.cristian.Peliculas.usuario.domain.UsuarioRepository;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -31,4 +32,36 @@ public class UsuarioRepositoryMysql implements UsuarioRepository {
         }
        return usuarios;
     }
+
+    @Override
+    public void saveUsuario(Usuario usuario) {
+        try {
+            PreparedStatement statement=DBConnection.getInstance().prepareStatement("INSERT INTO usuario (ID,Nombre) VALUES (NULL, ?)");
+            statement.setString(1,usuario.getNombre());
+            statement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    @Override
+    public void deleteUsuario(Integer id) {
+
+    }
+
+    @Override
+    public void updateUsuario(Usuario usuario,String nombre) {
+        try {
+            PreparedStatement statement=DBConnection.getInstance().prepareStatement("update videojuego set nombre=? where id=?");
+            statement.setString(1,usuario.getNombre());
+            statement.setString(2,nombre);
+            statement.execute();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
 }

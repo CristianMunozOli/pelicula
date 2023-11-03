@@ -19,4 +19,12 @@ public class UsuarioUseCasesTest {
         List<Usuario> usuarios = this.usuarioUseCases.getAll();
         assertEquals(1,usuarios.size());
     }
+    @Test
+    void saveUsuario(){
+        this.usuarioUseCases.saveUsuario(new Usuario("user1"));
+        List<Usuario> usuarios = this.usuarioUseCases.getAll();
+        assertEquals(2,usuarios.size());
+    }
+
+
 }
