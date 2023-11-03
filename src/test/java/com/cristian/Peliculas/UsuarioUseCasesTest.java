@@ -17,7 +17,7 @@ public class UsuarioUseCasesTest {
     @Test
     void getAll(){
         List<Usuario> usuarios = this.usuarioUseCases.getAll();
-        assertEquals(1,usuarios.size());
+        assertEquals(2,usuarios.size());
     }
     @Test
     void saveUsuario(){
@@ -25,6 +25,11 @@ public class UsuarioUseCasesTest {
         List<Usuario> usuarios = this.usuarioUseCases.getAll();
         assertEquals(2,usuarios.size());
     }
-
+    @Test
+    void deleteVideojuego(){
+        this.usuarioUseCases.deleteUsuario(8);
+        List<Usuario> usuarios = this.usuarioUseCases.getAll();
+        assertEquals(1,usuarios.size());
+    }
 
 }

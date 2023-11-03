@@ -49,13 +49,18 @@ public class UsuarioRepositoryMysql implements UsuarioRepository {
 
     @Override
     public void deleteUsuario(Integer id) {
-
+        try {
+            PreparedStatement statement=DBConnection.getInstance().prepareStatement("delete from usuario where id="+id);
+            statement.execute();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     @Override
     public void updateUsuario(Usuario usuario,String nombre) {
         try {
-            PreparedStatement statement=DBConnection.getInstance().prepareStatement("update videojuego set nombre=? where id=?");
+            PreparedStatement statement=DBConnection.getInstance().prepareStatement("update usuario set nombre=? where id=?");
             statement.setString(1,usuario.getNombre());
             statement.setString(2,nombre);
             statement.execute();
