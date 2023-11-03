@@ -58,11 +58,11 @@ public class UsuarioRepositoryMysql implements UsuarioRepository {
     }
 
     @Override
-    public void updateUsuario(Usuario usuario,String nombre) {
+    public void updateUsuario(Usuario usuario,Integer id) {
         try {
             PreparedStatement statement=DBConnection.getInstance().prepareStatement("update usuario set nombre=? where id=?");
             statement.setString(1,usuario.getNombre());
-            statement.setString(2,nombre);
+            statement.setInt(2,id);
             statement.execute();
         } catch (SQLException e) {
             System.err.println(e.getMessage());

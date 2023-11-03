@@ -16,4 +16,8 @@ public class Usuario {
     public String getNombre() {
         return nombre;
     }
+
+    public Integer getId() {
+        return id;
+    }
 }
