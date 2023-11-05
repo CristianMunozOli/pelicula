@@ -23,7 +23,7 @@ public class UsuarioRestController {
         return usuarios;
     }
     @PutMapping(path ="/usuarios/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void saveUpdate(@RequestBody Usuario usuario,@PathVariable Integer id){
+    public void updateUsuario(@RequestBody Usuario usuario,@PathVariable Integer id){
         this.usuarioUseCases.updateUsuario(usuario,id);
     }
     @DeleteMapping("/usuarios/{id}")

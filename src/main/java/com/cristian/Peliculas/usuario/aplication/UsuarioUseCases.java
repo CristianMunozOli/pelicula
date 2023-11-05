@@ -12,7 +12,7 @@ public class UsuarioUseCases {
         this.usuarioRepository = usuarioRepository;
     }
     public List<Usuario> getAll(){ return this.usuarioRepository.getAll();}
-    public void saveUsuario(Usuario usuario){ this.usuarioRepository.saveUsuario(usuario);}
-    public void updateUsuario(Usuario usuario, Integer id){ this.usuarioRepository.updateUsuario(usuario,id);}
-    public void deleteUsuario(Integer id){ this.usuarioRepository.deleteUsuario(id);}
+    public List<Usuario> saveUsuario(Usuario usuario){ return this.usuarioRepository.saveUsuario(usuario);}
+    public Usuario updateUsuario(Usuario usuario, Integer id){ return this.usuarioRepository.updateUsuario(usuario,id);}
+    public List<Usuario> deleteUsuario(Integer id){ return this.usuarioRepository.deleteUsuario(id);}
 }

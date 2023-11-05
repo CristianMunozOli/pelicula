@@ -34,7 +34,7 @@ public class UsuarioRepositoryMysql implements UsuarioRepository {
     }
 
     @Override
-    public void saveUsuario(Usuario usuario) {
+    public List<Usuario> saveUsuario(Usuario usuario) {
         try {
             PreparedStatement statement=DBConnection.getInstance().prepareStatement("INSERT INTO usuario (ID,Nombre) VALUES (NULL, ?)");
             statement.setString(1,usuario.getNombre());
@@ -42,23 +42,25 @@ public class UsuarioRepositoryMysql implements UsuarioRepository {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
+        List<Usuario> usuarios = getAll();
+        return usuarios;
     }
 
 
     @Override
-    public void deleteUsuario(Integer id) {
+    public List<Usuario> deleteUsuario(Integer id) {
         try {
             PreparedStatement statement=DBConnection.getInstance().prepareStatement("delete from usuario where id="+id);
             statement.execute();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
+        List<Usuario> usuarios = getAll();
+        return usuarios;
     }
 
     @Override
-    public void updateUsuario(Usuario usuario,Integer id) {
+    public Usuario updateUsuario(Usuario usuario,Integer id) {
         try {
             PreparedStatement statement=DBConnection.getInstance().prepareStatement("update usuario set nombre=? where id=?");
             statement.setString(1,usuario.getNombre());
@@ -67,6 +69,8 @@ public class UsuarioRepositoryMysql implements UsuarioRepository {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
+        Usuario usuarioModificado = new Usuario(usuario.getId(), usuario.getNombre());
+        return usuarioModificado;
     }
 
 }

@@ -17,19 +17,22 @@ public class UsuarioUseCasesTest {
     @Test
     void getAll(){
         List<Usuario> usuarios = this.usuarioUseCases.getAll();
-        assertEquals(2,usuarios.size());
+        assertEquals(3,usuarios.size());
     }
     @Test
     void saveUsuario(){
-        this.usuarioUseCases.saveUsuario(new Usuario("user1"));
+        Usuario usuario = new Usuario("Usuario1");
+        this.usuarioUseCases.saveUsuario(usuario);
         List<Usuario> usuarios = this.usuarioUseCases.getAll();
-        assertEquals(2,usuarios.size());
+        assertEquals(4,usuarios.size());
     }
+
     @Test
-    void deleteVideojuego(){
-        this.usuarioUseCases.deleteUsuario(8);
+    void deleteUsuario(){
+      //Cambiar id_usuario por una id existente
+        this.usuarioUseCases.deleteUsuario(1);
         List<Usuario> usuarios = this.usuarioUseCases.getAll();
-        assertEquals(1,usuarios.size());
+        assertEquals(3,usuarios.size());
     }
 
 }

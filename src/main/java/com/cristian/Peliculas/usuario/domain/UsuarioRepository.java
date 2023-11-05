@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface UsuarioRepository {
     public List<Usuario> getAll();
-    public void saveUsuario(Usuario usuario);
-    public void updateUsuario(Usuario usuario,Integer id);
-    public void deleteUsuario(Integer id);
+    public List<Usuario> saveUsuario(Usuario usuario);
+    public Usuario updateUsuario(Usuario usuario,Integer id);
+    public List<Usuario> deleteUsuario(Integer id);
 }
